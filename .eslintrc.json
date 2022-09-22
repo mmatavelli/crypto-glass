@@ -14,8 +14,7 @@
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+    "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint", "eslint-plugin-import-helpers"],
   "rules": {
@@ -23,12 +22,14 @@
     "react/react-in-jsx-scope": "off",
     "import/no-extraneous-dependencies": "off",
     "camelcase": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
     "import-helpers/order-imports": [
       "warn",
       {
         "newlinesBetween": "always",
         "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
-        "alphabetize": {"order": "asc", "ignoreCase": true}
+        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
   }
