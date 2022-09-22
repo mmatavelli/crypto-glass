@@ -1,6 +1,4 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
-
 import { navigationTheme } from '../../theme/lightTheme';
 import { AuthStackNavigator } from './AuthStackNavigator';
 

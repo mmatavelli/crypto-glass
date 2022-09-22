@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Container, Image, Title } from './styles';
 
 type OnboardingItemProps = {

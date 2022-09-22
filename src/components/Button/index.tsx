@@ -1,4 +1,3 @@
-import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
 
 import { Typography } from '../Typography';

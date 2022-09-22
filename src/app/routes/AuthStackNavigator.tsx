@@ -1,6 +1,4 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
-
 import { Onboarding } from '../../features/auth/screens/Onboarding';
 import { AuthStackParamsList } from '../../types/navigation';
 
