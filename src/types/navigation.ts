@@ -8,3 +8,7 @@ export type AuthStackParamsList = {
 
 export type AuthScreenProp<T extends keyof AuthStackParamsList> =
   StackNavigationProp<AuthStackParamsList, T>;
+
+export type ApplicationStackParamsList = {
+  CoinList: undefined;
+};
