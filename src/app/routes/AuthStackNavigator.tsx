@@ -3,6 +3,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'styled-components/native';
 import { Onboarding } from '../../features/auth/screens/Onboarding';
 import { SignIn } from '../../features/auth/screens/SignIn';
+import { SignUp } from '../../features/auth/screens/SignUp';
 import { AuthStackParamsList } from '../../types/navigation';
 
 const { Navigator, Screen } = createStackNavigator<AuthStackParamsList>();
@@ -46,6 +47,13 @@ export function AuthStackNavigator() {
         component={SignIn}
         options={{
           headerTitle: 'Sign In',
+        }}
+      />
+      <Screen
+        name="SignUp"
+        component={SignUp}
+        options={{
+          headerTitle: 'Sign Up',
         }}
       />
     </Navigator>
