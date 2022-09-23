@@ -3,7 +3,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components/native';
 
-import { theme } from '../theme/lightTheme';
+import { lightTheme } from '../theme/lightTheme';
 import { Routes } from './routes';
 
 export function App() {
@@ -14,7 +14,7 @@ export function App() {
       }}
     >
       <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={lightTheme}>
           <StatusBar
             barStyle="dark-content"
             translucent
