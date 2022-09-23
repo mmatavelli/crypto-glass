@@ -3,6 +3,9 @@ apply plugin: "com.android.application"
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
+apply plugin: "com.android.application"
+apply plugin: "com.google.gms.google-services"
+
 project.ext.vectoricons = [
     iconFontNames: ['Feather.ttf' ] // Name of the font files you want to copy
 ]

@@ -1,3 +1,5 @@
+$RNFirebaseAsStaticFramework = true
+
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -6,12 +8,14 @@ install! 'cocoapods', :deterministic_uuids => false
 
 target 'CryptoGlass' do
   config = use_native_modules!
-
+  
+  use_frameworks! :linkage => :static
   # Flags change depending on the env values.
   flags = get_default_flags()
 
   use_react_native!(
     :path => config[:reactNativePath],
+
     # Hermes is now enabled by default. Disable by setting this flag to false.
     # Upcoming versions of React Native may rely on get_default_flags(), but
     # we make it explicit here to aid in the React Native upgrade process.
