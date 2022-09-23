@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { useFormik } from 'formik';
 import { useRef } from 'react';
 import {
   Alert,
@@ -7,6 +8,7 @@ import {
   TextInput as RNTextInput,
 } from 'react-native';
 import { useTheme } from 'styled-components/native';
+import * as yup from 'yup';
 import { Divider } from '../../../../components/Divider';
 import { TextInput } from '../../../../components/TextInput';
 import { Typography } from '../../../../components/Typography';
@@ -22,9 +24,6 @@ import {
   SocialLoginContainer,
   SubmitButton,
 } from './styles';
-
-import { useFormik } from 'formik';
-import * as yup from 'yup';
 
 type FormValues = {
   email: string;
