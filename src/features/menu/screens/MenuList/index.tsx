@@ -1,5 +1,8 @@
-import { FlatList } from 'react-native';
+import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/native';
+import { Alert, FlatList } from 'react-native';
 import { useTheme } from 'styled-components/native';
+import { ApplicationScreenProp } from '../../../../types/navigation';
 import { MenuItem } from '../../components/MenuItem';
 import { UserProfile } from '../../components/UserProfile';
 import { Container } from './styles';
@@ -25,8 +28,29 @@ const menuItems = [
 export function MenuList() {
   const { spacing } = useTheme();
 
+  const { navigate } = useNavigation<ApplicationScreenProp<'MenuList'>>();
+
+  function handleSignOut() {
+    Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Sign Out',
+        onPress: () => auth().signOut(),
+      },
+    ]);
+  }
+
   function renderItem({ item }: { item: typeof menuItems[0] }) {
-    return <MenuItem {...item} />;
+    function handlePress() {
+      navigate(item.route as any);
+    }
+
+    return (
+      <MenuItem title={item.title} icon={item.icon} onPress={handlePress} />
+    );
   }
 
   return (
@@ -39,6 +63,9 @@ export function MenuList() {
         renderItem={renderItem}
         contentContainerStyle={{ paddingHorizontal: spacing[3] }}
         ListHeaderComponentStyle={{ marginBottom: spacing[4] }}
+        ListFooterComponent={
+          <MenuItem title="Logout" icon="log-out" onPress={handleSignOut} />
+        }
       />
     </Container>
   );
