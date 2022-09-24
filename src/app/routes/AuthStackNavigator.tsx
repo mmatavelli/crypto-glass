@@ -1,11 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'styled-components/native';
 
 import { Onboarding } from '../../features/auth/screens/Onboarding';
 import { SignIn } from '../../features/auth/screens/SignIn';
 import { SignUp } from '../../features/auth/screens/SignUp';
 import { AuthStackParamsList } from '../../types/navigation';
+import { ChevronLeftIcon } from '../components/ChevronLeftIcon';
 
 const { Navigator, Screen } = createStackNavigator<AuthStackParamsList>();
 
@@ -21,19 +21,14 @@ export function AuthStackNavigator() {
           shadowColor: 'transparent',
           elevation: 0,
         },
+        headerLeftContainerStyle: {
+          paddingLeft: spacing[3],
+        },
         headerTitleStyle: {
           ...textVariants.heading3,
+          fontWeight: 'bold',
         },
-        headerBackImage: () => (
-          <Feather
-            name="arrow-left"
-            size={textVariants.heading2.fontSize}
-            color={palette.text}
-            style={{
-              marginLeft: spacing[3],
-            }}
-          />
-        ),
+        headerBackImage: ChevronLeftIcon,
       }}
     >
       <Screen
