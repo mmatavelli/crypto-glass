@@ -1,21 +1,19 @@
 import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
-import {
-  Alert,
-  Platform,
-  Pressable,
-  TextInput as RNTextInput,
-} from 'react-native';
+import { Platform, Pressable, TextInput as RNTextInput } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import * as yup from 'yup';
 import { Divider } from '../../../../components/Divider';
 import { TextInput } from '../../../../components/TextInput';
 import { Typography } from '../../../../components/Typography';
+import { useSnackbar } from '../../../../hooks/useSnackbar';
 import { AuthScreenProp } from '../../../../types/navigation';
 import { AppleIcon } from '../../components/icons/AppleIcon';
 import { GoogleIcon } from '../../components/icons/GoogleIcon';
 import { MetaIcon } from '../../components/icons/MetaIcon';
+import { signInWithEmailAndPasswordRequest } from '../../requests/signInWithEmailAndPasswordRequest';
+import { SignInFormData } from '../../types';
 import {
   Container,
   Content,
@@ -24,11 +22,6 @@ import {
   SocialLoginContainer,
   SubmitButton,
 } from './styles';
-
-type FormValues = {
-  email: string;
-  password: string;
-};
 
 const validationSchema = yup.object({
   email: yup
@@ -45,16 +38,29 @@ export function SignIn() {
 
   const { navigate } = useNavigation<AuthScreenProp<'SignIn'>>();
 
-  const formik = useFormik<FormValues>({
+  const { show } = useSnackbar();
+
+  async function handleSignIn({ email, password }: SignInFormData) {
+    try {
+      await signInWithEmailAndPasswordRequest({ email, password });
+    } catch (error) {
+      if (error instanceof Error) {
+        show(error.message, {
+          severity: 'error',
+        });
+      }
+    }
+  }
+
+  const formik = useFormik<SignInFormData>({
     initialValues: {
       email: '',
       password: '',
     },
-    validateOnBlur: true,
+    validateOnBlur: false,
+    validateOnChange: false,
     validationSchema: validationSchema,
-    onSubmit: values => {
-      Alert.alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: handleSignIn,
   });
 
   function handleNavigateToSigUp() {
