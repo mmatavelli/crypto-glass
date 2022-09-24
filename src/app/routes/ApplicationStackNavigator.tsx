@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from 'styled-components/native';
 import { CoinList } from '../../features/markets/screens/CoinList';
+import { MenuList } from '../../features/menu/screens/MenuList';
 import { ApplicationStackParamsList } from '../../types/navigation';
 import { HeaderLeft } from '../components/HeaderLeft';
 
@@ -24,6 +25,7 @@ export function ApplicationStackNavigator() {
         },
         headerTitleStyle: {
           ...textVariants.heading2,
+          fontWeight: 'bold',
         },
         headerLeft: ({ canGoBack }) => <HeaderLeft canGoBack={canGoBack} />,
       }}
@@ -35,7 +37,13 @@ export function ApplicationStackNavigator() {
           title: 'Home',
         }}
       />
-      <Screen name="Menu" component={CoinList} />
+      <Screen
+        name="MenuList"
+        component={MenuList}
+        options={{
+          title: 'Menu',
+        }}
+      />
     </Navigator>
   );
 }
