@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from 'styled-components/native';
 import { CoinList } from '../../features/markets/screens/CoinList';
 import { MenuList } from '../../features/menu/screens/MenuList';
+import { ProfileSettings } from '../../features/profile/screens/ProfileSettings';
 import { ApplicationStackParamsList } from '../../types/navigation';
 import { HeaderLeft } from '../components/HeaderLeft';
 
@@ -42,6 +43,13 @@ export function ApplicationStackNavigator() {
         component={MenuList}
         options={{
           title: 'Menu',
+        }}
+      />
+      <Screen
+        name="ProfileSettings"
+        component={ProfileSettings}
+        options={{
+          title: 'Profile Settings',
         }}
       />
     </Navigator>
