@@ -1,26 +1,17 @@
 import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
-import {
-  Alert,
-  Platform,
-  Pressable,
-  TextInput as RNTextInput,
-} from 'react-native';
+import { Platform, Pressable, TextInput as RNTextInput } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import * as yup from 'yup';
 import { Divider } from '../../../../components/Divider';
 import { TextInput } from '../../../../components/TextInput';
 import { Typography } from '../../../../components/Typography';
+import { useSnackbar } from '../../../../hooks/useSnackbar';
 import { AuthScreenProp } from '../../../../types/navigation';
+import { createUserWithEmailAndPasswordRequest } from '../../requests/createUserWithEmailAndPasswordRequest';
+import { SignUpFormData } from '../../types';
 import { Container, Content, SubmitButton } from './styles';
-
-type FormValues = {
-  name: string;
-  email: string;
-  password: string;
-  passwordConfirmation: string;
-};
 
 const validationSchema = yup.object({
   name: yup.string().required('Name is required'),
@@ -43,18 +34,35 @@ export function SignUp() {
 
   const { goBack } = useNavigation<AuthScreenProp<'SignUp'>>();
 
-  const formik = useFormik<FormValues>({
+  const { show } = useSnackbar();
+
+  async function handleSignUp({ name, email, password }: SignUpFormData) {
+    try {
+      await createUserWithEmailAndPasswordRequest({
+        name,
+        email,
+        password,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        show(error.message, {
+          severity: 'error',
+        });
+      }
+    }
+  }
+
+  const formik = useFormik<SignUpFormData>({
     initialValues: {
       name: '',
       email: '',
       password: '',
       passwordConfirmation: '',
     },
-    validateOnBlur: true,
+    validateOnBlur: false,
+    validateOnChange: false,
     validationSchema: validationSchema,
-    onSubmit: values => {
-      Alert.alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: handleSignUp,
   });
 
   function handleFocusEmailInput() {
