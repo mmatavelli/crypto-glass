@@ -29,6 +29,7 @@ export function ApplicationStackNavigator() {
           ...textVariants.heading2,
           fontWeight: 'bold',
         },
+        // eslint-disable-next-line react/no-unstable-nested-components
         headerLeft: ({ canGoBack }) => <HeaderLeft canGoBack={canGoBack} />,
       }}
     >
