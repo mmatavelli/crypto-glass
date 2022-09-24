@@ -41,4 +41,8 @@ function HeaderLeftComponent({ canGoBack }: HeaderLeftProps) {
   );
 }
 
+HeaderLeftComponent.defaultProps = {
+  canGoBack: false,
+};
+
 export const HeaderLeft = memo(HeaderLeftComponent);
