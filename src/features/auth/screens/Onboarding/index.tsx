@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 
 import { AuthScreenProp } from '../../../../types/navigation';
-import onboardImage1 from '../../assets/images/onboard1.png';
-import onboardImage2 from '../../assets/images/onboard2.png';
-import onboardImage3 from '../../assets/images/onboard3.png';
+import onboardImage1 from '../../assets/images/onboard-1.png';
+import onboardImage2 from '../../assets/images/onboard-2.png';
+import onboardImage3 from '../../assets/images/onboard-3.png';
 import { OnboardingItem } from '../../components/OnboardingItem';
 import { Container, Dot, Pagination, StartNowButton } from './styles';
 
