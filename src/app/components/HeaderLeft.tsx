@@ -17,7 +17,7 @@ function HeaderLeftComponent({ canGoBack }: HeaderLeftProps) {
     if (canGoBack) {
       goBack();
     } else {
-      navigate('Menu' as never);
+      navigate('MenuList' as never);
     }
   }
 
