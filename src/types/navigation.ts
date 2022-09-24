@@ -12,6 +12,7 @@ export type AuthScreenProp<T extends keyof AuthStackParamsList> =
 export type ApplicationStackParamsList = {
   CoinList: undefined;
   MenuList: undefined;
+  ProfileSettings: undefined;
 };
 
 export type ApplicationScreenProp<T extends keyof ApplicationStackParamsList> =
