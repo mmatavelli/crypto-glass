@@ -8,20 +8,23 @@ import {
 } from 'react-native';
 
 import { AuthScreenProp } from '../../../../types/navigation';
+import onboardImage1 from '../../assets/images/onboard1.png';
+import onboardImage2 from '../../assets/images/onboard2.png';
+import onboardImage3 from '../../assets/images/onboard3.png';
 import { OnboardingItem } from '../../components/OnboardingItem';
 import { Container, Dot, Pagination, StartNowButton } from './styles';
 
 const SLIDES = [
   {
-    image: require('../../assets/images/onboarding1.png'),
+    image: onboardImage1,
     title: 'Cryptocurrency is the most very secure in the world',
   },
   {
-    image: require('../../assets/images/onboarding2.png'),
+    image: onboardImage2,
     title: 'Our application will help you work comfortably',
   },
   {
-    image: require('../../assets/images/onboarding3.png'),
+    image: onboardImage3,
     title: 'Save your time - start earning with us!',
   },
 ];
