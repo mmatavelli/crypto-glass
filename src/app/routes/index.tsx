@@ -1,6 +1,6 @@
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { NavigationContainer } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { navigationTheme } from '../../theme/lightTheme';
 import { ApplicationStackNavigator } from './ApplicationStackNavigator';
@@ -11,15 +11,18 @@ export function Routes() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  function onAuthStateChanged(user: FirebaseAuthTypes.User) {
-    setIsAuthenticated(!!user);
-    if (initializing) setInitializing(false);
-  }
+  const onAuthStateChanged = useCallback(
+    (user: FirebaseAuthTypes.User) => {
+      setIsAuthenticated(!!user);
+      if (initializing) setInitializing(false);
+    },
+    [initializing],
+  );
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged as any);
     return subscriber;
-  }, []);
+  }, [onAuthStateChanged]);
 
   if (initializing) return null;
 
