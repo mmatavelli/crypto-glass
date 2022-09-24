@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from 'styled-components/native';
 
-import { CoinList } from '../../features/markets/screens/CoinList';
+import { CoinList } from '../../features/coins/screens/CoinList';
 import { MenuList } from '../../features/menu/screens/MenuList';
 import { ProfileSettings } from '../../features/profile/screens/ProfileSettings';
 import { ApplicationStackParamsList } from '../../types/navigation';
