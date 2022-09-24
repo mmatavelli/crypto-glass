@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Platform, Pressable, TextInput as RNTextInput } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import * as yup from 'yup';
+
 import { Divider } from '../../../../components/Divider';
 import { TextInput } from '../../../../components/TextInput';
 import { Typography } from '../../../../components/Typography';
@@ -61,7 +62,7 @@ export function SignUp() {
     },
     validateOnBlur: false,
     validateOnChange: false,
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: handleSignUp,
   });
 

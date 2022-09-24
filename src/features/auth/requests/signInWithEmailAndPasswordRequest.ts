@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+
 import { SignInFormData } from '../types';
 
 export async function signInWithEmailAndPasswordRequest({

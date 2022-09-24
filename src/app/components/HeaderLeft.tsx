@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { Pressable } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'styled-components/native';
+
 import { Avatar } from '../../components/Avatar';
 
 type HeaderLeftProps = {

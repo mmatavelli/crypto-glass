@@ -1,5 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+
 import { Typography } from '../../../../components/Typography';
 import { ApplicationScreenProp } from '../../../../types/navigation';
 import {

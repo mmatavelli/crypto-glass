@@ -2,6 +2,7 @@ import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, FlatList } from 'react-native';
 import { useTheme } from 'styled-components/native';
+
 import { ApplicationScreenProp } from '../../../../types/navigation';
 import { MenuItem } from '../../components/MenuItem';
 import { UserProfile } from '../../components/UserProfile';

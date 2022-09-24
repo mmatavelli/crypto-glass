@@ -6,8 +6,8 @@ import {
   useWindowDimensions,
   ViewToken,
 } from 'react-native';
-import { AuthScreenProp } from '../../../../types/navigation';
 
+import { AuthScreenProp } from '../../../../types/navigation';
 import { OnboardingItem } from '../../components/OnboardingItem';
 import { Container, Dot, Pagination, StartNowButton } from './styles';
 

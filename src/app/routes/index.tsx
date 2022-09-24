@@ -1,6 +1,7 @@
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { NavigationContainer } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
+
 import { navigationTheme } from '../../theme/lightTheme';
 import { ApplicationStackNavigator } from './ApplicationStackNavigator';
 import { AuthStackNavigator } from './AuthStackNavigator';

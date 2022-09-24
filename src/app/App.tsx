@@ -2,8 +2,8 @@ import { StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components/native';
-import { SnackbarProvider } from '../contexts/SnackbarContext';
 
+import { SnackbarProvider } from '../contexts/SnackbarContext';
 import { lightTheme } from '../theme/lightTheme';
 import { Routes } from './routes';
 

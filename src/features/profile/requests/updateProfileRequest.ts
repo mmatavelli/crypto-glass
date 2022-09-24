@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+
 import { UpdateProfileFormData } from '../types';
 
 export async function updateProfileRequest({
@@ -7,7 +8,7 @@ export async function updateProfileRequest({
   password,
 }: UpdateProfileFormData) {
   try {
-    const currentUser = auth().currentUser;
+    const { currentUser } = auth();
 
     if (currentUser) {
       if (name !== currentUser.displayName) {

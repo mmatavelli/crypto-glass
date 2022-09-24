@@ -1,5 +1,6 @@
 import Feather from 'react-native-vector-icons/Feather';
 import styled from 'styled-components/native';
+
 import { Avatar } from '../../../../components/Avatar';
 
 export const Container = styled.TouchableOpacity.attrs({

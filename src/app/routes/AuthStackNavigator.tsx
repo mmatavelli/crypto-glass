@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'styled-components/native';
+
 import { Onboarding } from '../../features/auth/screens/Onboarding';
 import { SignIn } from '../../features/auth/screens/SignIn';
 import { SignUp } from '../../features/auth/screens/SignUp';

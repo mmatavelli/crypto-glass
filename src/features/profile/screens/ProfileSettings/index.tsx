@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { Platform, TextInput as RNTextInput } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import * as yup from 'yup';
+
 import { Divider } from '../../../../components/Divider';
 import { TextInput } from '../../../../components/TextInput';
 import { useSnackbar } from '../../../../hooks/useSnackbar';
@@ -69,7 +70,7 @@ export function ProfileSettings() {
     },
     validateOnBlur: false,
     validateOnChange: false,
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: handleUpdateProfile,
   });
 

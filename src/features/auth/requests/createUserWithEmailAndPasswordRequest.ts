@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+
 import { SignUpFormData } from '../types';
 
 export async function createUserWithEmailAndPasswordRequest({
@@ -9,7 +10,7 @@ export async function createUserWithEmailAndPasswordRequest({
   try {
     await auth().createUserWithEmailAndPassword(email, password);
 
-    const currentUser = auth().currentUser;
+    const { currentUser } = auth();
 
     if (currentUser) {
       await currentUser.updateProfile({
