@@ -44,7 +44,7 @@ export function MenuList() {
     ]);
   }
 
-  function renderItem({ item }: { item: typeof menuItems[0] }) {
+  function renderItem(item: typeof menuItems[0]) {
     function handlePress() {
       navigate(item.route as any);
     }
@@ -61,7 +61,7 @@ export function MenuList() {
         showsVerticalScrollIndicator={false}
         data={menuItems}
         ListHeaderComponent={UserProfile}
-        renderItem={renderItem}
+        renderItem={({ item }) => renderItem(item)}
         contentContainerStyle={{ paddingHorizontal: spacing[3] }}
         ListHeaderComponentStyle={{ marginBottom: spacing[4] }}
         ListFooterComponent={
