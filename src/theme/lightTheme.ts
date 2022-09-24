@@ -11,6 +11,8 @@ export const lightTheme = {
     background: colors.grey[50],
     positive: colors.positive[600],
     negative: colors.negative[600],
+    info: '#2196f3',
+    warning: '#ff9800',
     text: colors.grey[900],
     disabled: colors.grey[400],
     hint: colors.grey[400],
