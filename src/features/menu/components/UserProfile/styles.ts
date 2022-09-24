@@ -14,6 +14,10 @@ export const UserPhotoAvatar = styled(Avatar)`
   margin-right: ${({ theme }) => theme.spacing[3]}px;
 `;
 
+export const UserNameContainer = styled.View`
+  flex: 0.9;
+`;
+
 export const ChevronRightIcon = styled(Feather).attrs({
   name: 'chevron-right',
 })`
