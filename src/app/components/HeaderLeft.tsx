@@ -1,17 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { Pressable } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import { useTheme } from 'styled-components/native';
 
 import { Avatar } from '../../components/Avatar';
+import { ChevronLeftIcon } from './ChevronLeftIcon';
 
 type HeaderLeftProps = {
   canGoBack?: boolean;
 };
 
 function HeaderLeftComponent({ canGoBack }: HeaderLeftProps) {
-  const { textVariants, palette } = useTheme();
   const { goBack, navigate } = useNavigation();
 
   function handlePress() {
@@ -25,11 +23,7 @@ function HeaderLeftComponent({ canGoBack }: HeaderLeftProps) {
   return (
     <Pressable onPress={handlePress}>
       {canGoBack ? (
-        <Feather
-          name="arrow-left"
-          size={textVariants.heading2.fontSize}
-          color={palette.text}
-        />
+        <ChevronLeftIcon />
       ) : (
         <Avatar
           source={{
