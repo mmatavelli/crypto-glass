@@ -4,8 +4,8 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from 'styled-components/native';
 
+import { CoinItem } from '../../components/CoinItem';
 import { CoinListHeader } from '../../components/CoinListHeader';
-import { CoinListItem } from '../../components/CoinListItem';
 import { CoinListPlaceholder } from '../../components/CoinListPlaceholder';
 import { useCoins } from '../../hooks/useCoins';
 import { Container } from './styles';
@@ -45,7 +45,7 @@ export function CoinList() {
       <FlatList
         keyExtractor={item => item.id}
         data={data?.pages.flatMap(page => page.coins)}
-        renderItem={({ item }) => <CoinListItem coin={item} />}
+        renderItem={({ item }) => <CoinItem coin={item} />}
         onRefresh={refetch}
         refreshControl={
           <RefreshControl
