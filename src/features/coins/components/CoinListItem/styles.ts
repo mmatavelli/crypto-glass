@@ -4,7 +4,7 @@ export const Container = styled.TouchableOpacity`
   height: 60px;
   flex-direction: row;
   align-items: center;
-  margin-bottom: ${({ theme }) => theme.spacing[3]}px;
+  margin-bottom: ${({ theme }) => theme.spacing[4]}px;
 `;
 
 export const CoinImageContainer = styled.View`

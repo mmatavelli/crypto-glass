@@ -35,7 +35,7 @@ export function CoinListPlaceholder() {
                 flexDirection="row"
                 alignItems="center"
                 paddingHorizontal={spacing[3]}
-                marginBottom={spacing[3]}
+                marginBottom={spacing[4]}
               >
                 <SkeletonPlaceholder.Item
                   width={60}
