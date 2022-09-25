@@ -8,7 +8,7 @@ import { Container, TabButton } from './styles';
 const TAB_ITEMS = [
   {
     value: 'all',
-    children: <Typography variant="button1">All</Typography>,
+    children: <Typography variant="button2">All</Typography>,
   },
   {
     value: 'favorites',
