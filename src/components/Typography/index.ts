@@ -15,7 +15,7 @@ export const Typography = styled.Text<TypographyProps>`
       font-size: ${theme.textVariants[variant].fontSize}px;
       line-height: ${theme.textVariants[variant].lineHeight}px;
       font-family: ${theme.textVariants[variant].fontFamily};
-      color: ${theme.palette[color]};
+      color: ${theme.palette[color] ?? color};
       text-align: ${align};
     `}
 `;
