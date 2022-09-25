@@ -34,6 +34,7 @@
     "react-query": "^3.39.2",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
+    "reduxsauce": "^1.2.1",
     "styled-components": "^5.3.5",
     "yup": "^0.32.11"
   },
