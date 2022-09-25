@@ -27,7 +27,7 @@ export function CoinList() {
     fetchNextPage,
   } = useCoins({
     per_page: 10,
-    price_change_percentage: '1h',
+    price_change_percentage: '24h',
   });
 
   function handleFetchNextPage() {

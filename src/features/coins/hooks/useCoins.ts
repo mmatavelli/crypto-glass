@@ -23,7 +23,7 @@ const listCoins = async ({
     coins: result.map(coin => ({
       ...coin,
       formattedCurrentPrice: formatUsd(coin.current_price),
-      formattedPriceChangePercentage1h: `${coin.price_change_percentage_1h_in_currency.toFixed(
+      formattedPriceChangePercentage24: `${coin.price_change_percentage_24h.toFixed(
         2,
       )}%`,
     })),
