@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { listOhlcByCoinIdRequest } from '../requests/listOhlcByCoinId';
+import { listOhlcByCoinIdRequest } from '../requests/listOhlcByCoinIdRequest';
 
 const findCoinChartDataById = async (coinId: string, days: number) => {
   const result = await listOhlcByCoinIdRequest(coinId, days);
