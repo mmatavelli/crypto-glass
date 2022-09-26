@@ -24,7 +24,9 @@ export function UserProfile() {
       <UserPhotoAvatar
         size={60}
         source={{
-          uri: user?.photoURL || undefined,
+          uri:
+            user?.photoURL ||
+            'https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image-365x365.png',
         }}
       />
       <UserNameContainer>

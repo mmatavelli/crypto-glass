@@ -13,8 +13,11 @@ export async function createUserWithEmailAndPasswordRequest({
     const { currentUser } = auth();
 
     if (currentUser) {
+      const photoURL =
+        'https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image-365x365.png';
       await currentUser.updateProfile({
         displayName: name,
+        photoURL,
       });
     }
   } catch (error: any) {
