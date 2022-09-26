@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SplashScreen from 'react-native-splash-screen';
 import { QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
@@ -12,6 +14,10 @@ import { lightTheme } from '../theme/lightTheme';
 import { Routes } from './routes';
 
 export function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <GestureHandlerRootView
       style={{
