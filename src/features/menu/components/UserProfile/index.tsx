@@ -24,7 +24,7 @@ export function UserProfile() {
       <UserPhotoAvatar
         size={60}
         source={{
-          uri: 'https://avatars.githubusercontent.com/u/13172299?v=4',
+          uri: user?.photoURL || undefined,
         }}
       />
       <UserNameContainer>

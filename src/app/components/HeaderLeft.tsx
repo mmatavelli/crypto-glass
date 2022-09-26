@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { Pressable } from 'react-native';
@@ -10,6 +11,8 @@ type HeaderLeftProps = {
 };
 
 function HeaderLeftComponent({ canGoBack }: HeaderLeftProps) {
+  const user = auth().currentUser;
+
   const { goBack, navigate } = useNavigation();
 
   function handlePress() {
@@ -27,7 +30,7 @@ function HeaderLeftComponent({ canGoBack }: HeaderLeftProps) {
       ) : (
         <Avatar
           source={{
-            uri: 'https://avatars.githubusercontent.com/u/13172299?v=4',
+            uri: user?.photoURL || undefined,
           }}
         />
       )}
