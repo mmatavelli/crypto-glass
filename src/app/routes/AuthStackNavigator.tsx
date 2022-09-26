@@ -28,7 +28,8 @@ export function AuthStackNavigator() {
           ...textVariants.heading3,
           fontWeight: 'bold',
         },
-        headerBackImage: ChevronLeftIcon,
+        // eslint-disable-next-line react/no-unstable-nested-components
+        headerBackImage: () => <ChevronLeftIcon />,
       }}
     >
       <Screen
