@@ -8,7 +8,7 @@ import { Container, TabButton } from './styles';
 type CoinListHeaderProps<T> = {
   tabs: {
     value: T;
-    label: string;
+    label?: string;
     icon?: string;
   }[];
   value: T;
