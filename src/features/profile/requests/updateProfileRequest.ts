@@ -6,14 +6,19 @@ export async function updateProfileRequest({
   name,
   email,
   password,
+  photoURl,
 }: UpdateProfileFormData) {
   try {
     const { currentUser } = auth();
 
     if (currentUser) {
-      if (name !== currentUser.displayName) {
+      if (
+        name !== currentUser.displayName ||
+        photoURl !== currentUser.photoURL
+      ) {
         await currentUser.updateProfile({
           displayName: name,
+          photoURL: photoURl,
         });
       }
 
@@ -24,6 +29,8 @@ export async function updateProfileRequest({
       if (password) {
         await currentUser.updatePassword(password);
       }
+
+      await currentUser?.getIdToken(true);
     }
   } catch (error: any) {
     if (error.code === 'auth/invalid-email') {
@@ -32,6 +39,7 @@ export async function updateProfileRequest({
     if (error.code === 'auth/weak-password') {
       throw new Error('The password is not strong enough.');
     }
+
     throw new Error('An error occurred while updating your profile.');
   }
 }

@@ -1,11 +1,18 @@
 import auth from '@react-native-firebase/auth';
+import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
-import { useRef } from 'react';
-import { Platform, TextInput as RNTextInput } from 'react-native';
+import { useCallback, useRef } from 'react';
+import {
+  Platform,
+  TextInput as RNTextInput,
+  TouchableOpacity,
+} from 'react-native';
+import { launchImageLibrary } from 'react-native-image-picker';
 import { useTheme } from 'styled-components/native';
 import * as yup from 'yup';
 
+import { Avatar } from '../../../../components/Avatar';
 import { Divider } from '../../../../components/Divider';
 import { TextInput } from '../../../../components/TextInput';
 import { useSnackbar } from '../../../../hooks/useSnackbar';
@@ -43,9 +50,18 @@ export function ProfileSettings() {
     name,
     email,
     password,
+    photoURl,
+    asset,
   }: UpdateProfileFormData) {
     try {
-      await updateProfileRequest({ name, email, password });
+      if (asset?.uri) {
+        const reference = storage().ref(asset.fileName);
+        await reference.putFile(asset.uri);
+        // eslint-disable-next-line no-param-reassign
+        photoURl = await reference.getDownloadURL();
+      }
+
+      await updateProfileRequest({ name, email, password, photoURl });
 
       show('Profile updated successfully', {
         severity: 'success',
@@ -92,6 +108,21 @@ export function ProfileSettings() {
     }
   }
 
+  const handlePickImage = useCallback(async () => {
+    await launchImageLibrary(
+      {
+        mediaType: 'photo',
+        selectionLimit: 1,
+        quality: 0.5,
+      },
+      response => {
+        if (!response.didCancel && response.assets) {
+          formik.setFieldValue('asset', response.assets[0]);
+        }
+      },
+    );
+  }, [formik]);
+
   return (
     <Container behavior={Platform.OS === 'android' ? undefined : 'padding'}>
       <Content
@@ -102,10 +133,25 @@ export function ProfileSettings() {
         }}
       >
         <Divider />
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={handlePickImage}
+          style={{
+            alignSelf: 'center',
+            marginTop: spacing[4],
+            marginBottom: spacing[2],
+          }}
+        >
+          <Avatar
+            size={120}
+            source={{
+              uri: formik?.values.asset?.uri || user?.photoURL || undefined,
+            }}
+          />
+        </TouchableOpacity>
         <TextInput
           label="Name"
           style={{
-            marginTop: spacing[4],
             marginBottom: spacing[4],
           }}
           autoCapitalize="words"
