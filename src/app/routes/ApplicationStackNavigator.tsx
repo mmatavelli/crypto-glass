@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from 'styled-components/native';
 
+import { CoinDetails } from '../../features/coins/screens/CoinDetails';
 import { CoinList } from '../../features/coins/screens/CoinList';
 import { MenuList } from '../../features/menu/screens/MenuList';
 import { ProfileSettings } from '../../features/profile/screens/ProfileSettings';
@@ -39,6 +40,13 @@ export function ApplicationStackNavigator() {
         options={{
           title: 'Home',
         }}
+      />
+      <Screen
+        name="CoinDetails"
+        component={CoinDetails}
+        options={({ route }) => ({
+          title: route.params.coinName,
+        })}
       />
       <Screen
         name="MenuList"
