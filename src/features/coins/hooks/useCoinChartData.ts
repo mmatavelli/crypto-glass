@@ -13,7 +13,7 @@ export const useCoinChartData = (coinId: string, days = 1) => {
     ['coinChartData', { coinId, days }],
     () => findCoinChartDataById(coinId, days),
     {
-      staleTime: 1000 * 5,
+      keepPreviousData: true,
     },
   );
 };
