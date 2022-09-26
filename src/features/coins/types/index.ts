@@ -42,3 +42,16 @@ export type ListOhlcByCoinIdResponse = [
   number,
   number,
 ][];
+
+export type CoinNew = {
+  title: string;
+  keywords: string;
+  url: string;
+  source_name: string;
+  source_url: string;
+  created_at: string;
+};
+
+export type FindNewsByCoinIdResponse = {
+  news: CoinNew[];
+};
