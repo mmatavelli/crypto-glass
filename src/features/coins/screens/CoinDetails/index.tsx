@@ -6,13 +6,16 @@ import Feather from 'react-native-vector-icons/Feather';
 import { CandlestickChart } from 'react-native-wagmi-charts';
 import { useTheme } from 'styled-components/native';
 
+import { Divider } from '../../../../components/Divider';
 import { Tabs } from '../../../../components/Tabs';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../../hooks/useAppSelector';
 import { ApplicationStackParamsList } from '../../../../types/navigation';
 import { CoinItem } from '../../components/CoinItem';
+import { CoinNewsItem } from '../../components/NewsItem';
 import { useCoin } from '../../hooks/useCoin';
 import { useCoinChartData } from '../../hooks/useCoinChartData';
+import { useCoinNews } from '../../hooks/useCoinNews';
 import {
   addCoinToWatchList,
   removeCoinFromWatchList,
@@ -61,6 +64,8 @@ export function CoinDetails() {
 
   const { data: coinChartData, isLoading: isCoinChartDataLoading } =
     useCoinChartData(coinId, selectedRange);
+
+  const { data: coinNews, isLoading: isCoinNewsLoading } = useCoinNews(coinId);
 
   const chartWidth = width - spacing[3] * 2;
 
@@ -123,6 +128,25 @@ export function CoinDetails() {
         </CandlestickChart>
       </CandlestickChart.Provider>
       <CoinItem coin={coin} />
+      <Divider />
+      <Tabs
+        tabs={[
+          {
+            value: 1,
+            label: 'News',
+          },
+          {
+            value: 2,
+            label: 'About',
+          },
+        ]}
+        value={1}
+        onChange={() => {}}
+        style={{ marginVertical: spacing[4] }}
+      />
+      {coinNews?.map(news => (
+        <CoinNewsItem key={news.title} data={news} />
+      ))}
     </Container>
   );
 }
